@@ -1,6 +1,7 @@
 #ifndef FRACTION_H
 #define FRACTION_H
 #pragma once
+
 #include <iostream>
 
 using namespace std;

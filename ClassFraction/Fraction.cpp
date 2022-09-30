@@ -19,16 +19,13 @@ void Fraction::setDenominator(int _denominator) {
 }
 
 Fraction operator+(Fraction fractionOne, Fraction fractionTwo) {
-	Fraction phanSoTong(fractionOne.numerator * fractionTwo.getDenominator() + fractionOne.denominator * fractionTwo.getNumerator(), fractionOne.denominator * fractionTwo.getDenominator());
-	return phanSoTong.simplify();
+	return Fraction(fractionOne.numerator * fractionTwo.getDenominator() + fractionOne.denominator * fractionTwo.getNumerator(), fractionOne.denominator * fractionTwo.getDenominator()).simplify();
 }
 Fraction operator-(Fraction fractionOne, Fraction fractionTwo) {
-	Fraction phanSoHieu(fractionOne.numerator * fractionTwo.getDenominator() - fractionOne.denominator * fractionTwo.getNumerator(), fractionOne.denominator * fractionTwo.getDenominator());
-	return phanSoHieu.simplify();
+	return Fraction(fractionOne.numerator * fractionTwo.getDenominator() - fractionOne.denominator * fractionTwo.getNumerator(), fractionOne.denominator * fractionTwo.getDenominator()).simplify();
 }
 Fraction operator*(Fraction fractionOne, Fraction fractionTwo) {
-	Fraction phanSoTich(fractionOne.numerator * fractionTwo.getNumerator(), fractionOne.denominator * fractionTwo.getDenominator());
-	return phanSoTich.simplify();
+	return Fraction(fractionOne.numerator * fractionTwo.getNumerator(), fractionOne.denominator * fractionTwo.getDenominator()).simplify();
 }
 Fraction operator/(Fraction fractionOne, Fraction fractionTwo) {
 	return (fractionOne * fractionTwo.inverseFraction()).simplify();
@@ -42,20 +39,16 @@ Fraction& Fraction::operator+=(Fraction& fractionOne) {
 
 Method 2: use friend function*/
 Fraction& operator+=(Fraction& fractionOne, Fraction fractionTwo) {
-	fractionOne = fractionOne + fractionTwo;
-	return fractionOne;
+	return fractionOne = fractionOne + fractionTwo;
 }
 Fraction& operator-=(Fraction& fractionOne, Fraction fractionTwo) {
-	fractionOne = fractionOne - fractionTwo;
-	return fractionOne;
+	return fractionOne = fractionOne - fractionTwo;
 }
 Fraction& operator*=(Fraction& fractionOne, Fraction fractionTwo) {
-	fractionOne = fractionOne * fractionTwo;
-	return fractionOne;
+	return fractionOne = fractionOne * fractionTwo;
 }
 Fraction& operator/=(Fraction& fractionOne, Fraction fractionTwo) {
-	fractionOne = fractionOne / fractionTwo;
-	return fractionOne;
+	return fractionOne = fractionOne / fractionTwo;
 }
 
 bool operator>(Fraction fractionOne, Fraction fractionTwo) {
