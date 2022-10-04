@@ -95,11 +95,11 @@ Fraction Fraction::simplify() {
 	return *this;
 }
 
-int GCD(int parameterOne, int parameterTwo) {
-	parameterOne = abs(parameterOne);
-	parameterTwo = abs(parameterTwo);
-	if (parameterTwo == 0) {
-		return parameterOne;
+int GCD(int paraOne, int paraTwo) {
+	paraOne = abs(paraOne);
+	paraTwo = abs(paraTwo);
+	if (paraTwo == 0) {
+		return paraOne;
 	}
-	return GCD(parameterTwo, parameterOne % parameterTwo);
+	return GCD(paraTwo, paraOne % paraTwo);
 }

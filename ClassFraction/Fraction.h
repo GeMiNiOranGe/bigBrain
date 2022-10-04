@@ -36,6 +36,6 @@ public:
 	Fraction simplify();
 };
 
-int GCD(int parameterOne, int parameterTwo);
+int GCD(int paraOne, int paraTwo);
 
 #endif
