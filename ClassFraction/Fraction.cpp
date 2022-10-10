@@ -85,14 +85,19 @@ ostream& operator<<(ostream& out, Fraction _fraction) {
 }
 
 Fraction Fraction::inverseFraction() {
-	Fraction inverseFractionTemporary(getDenominator(), getNumerator());
-	return inverseFractionTemporary;
+	return Fraction(getDenominator(), getNumerator());
 }
+/*Method 1: use pointer
 Fraction Fraction::simplify() {
 	int temp = GCD(numerator, denominator);
 	numerator /= temp;
 	denominator /= temp;
 	return *this;
+}
+Method 2: don't use pointer*/
+Fraction Fraction::simplify() {
+	int temp = GCD(numerator, denominator);
+	return Fraction(numerator / temp, denominator / temp);
 }
 
 int GCD(int paraOne, int paraTwo) {
