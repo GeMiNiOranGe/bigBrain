@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{5DE99C1D-BB04-4927-8AFC-EACC8D14630A}</ProjectGuid>
+    <ProjectGuid>{6A0274EA-B92C-4A5E-956F-29FC11708CDE}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>ClassFraction</RootNamespace>
+    <RootNamespace>ClassSingleLinkedList</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -151,11 +151,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Fraction.cpp" />
-    <ClCompile Include="Main_Fraction.cpp" />
+    <ClCompile Include="Main_SingleLinkedList.cpp" />
+    <ClCompile Include="SingleLinkedList.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Fraction.h" />
+    <ClInclude Include="SingleLinkedList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

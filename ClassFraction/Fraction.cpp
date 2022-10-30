@@ -36,7 +36,6 @@ Fraction& Fraction::operator+=(Fraction& fractionOne) {
 	*this = *this + fractionOne;
 	return *this;
 }
-
 Method 2: use friend function*/
 Fraction& operator+=(Fraction& fractionOne, Fraction fractionTwo) {
 	return fractionOne = fractionOne + fractionTwo;
