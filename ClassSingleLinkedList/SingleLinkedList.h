@@ -3,7 +3,7 @@
 #pragma once
 
 #include <iostream>
-using std::ostream;
+using std::cout;
 using std::cin;
 using std::endl;
 using namespace std;
@@ -33,9 +33,8 @@ public:
 	void remove(dataType);
 
 	//void insertAt(dataType, int);
-	//void handle();
-	ostream& operator<<(ostream&, SingleLinkedList<dataType>&);
-	A& operator=(A other)
+	void handle(int);
+	void showList();
 private:
 	Node<dataType>* pHead;
 	Node<dataType>* pTail;
@@ -165,6 +164,34 @@ template<class dataType> inline void SingleLinkedList<dataType>::remove(dataType
 		pTemp->pNext = pWalker->pNext;
 		delete pWalker;
 		this->iSize--;
+	}
+}
+
+template<class dataType>
+inline void SingleLinkedList<dataType>::handle(int dataRemove) {
+	Node<dataType> * pWalker = this->pHead;
+	for (; pWalker != nullptr; pWalker = pWalker->pNext) {
+		if (dataRemove == pWalker->data) {
+			if (pWalker == this->pHead) {
+				pWalker = pWalker->pNext;
+				removeHead();
+			}
+			else if (pWalker == this->pTail) {
+				pWalker = searchPre(pWalker);
+				removeTail();
+			}
+			else {
+				pWalker = searchPre(pWalker);
+				remove(pWalker->pNext->data);
+			}
+		}
+	}
+}
+
+template<class dataType> inline void SingleLinkedList<dataType>::showList() {
+	Node<dataType> *pWalker = this->pHead;
+	for (; pWalker != nullptr; pWalker = pWalker->pNext) {
+		cout << pWalker->data << " ";
 	}
 }
 

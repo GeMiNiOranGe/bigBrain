@@ -4,16 +4,15 @@
 using namespace std;
 
 int main() {
-	SingleLinkedList<char> listTemp;
-	int length, index;
-	char data, tempNum;
-	cin >> length;
+	SingleLinkedList<int> listTemp;
+	int length, dataRemove, temp;
+	cin >> length >> dataRemove;
 	for (int i = 0; i < length; i++) {
-		cin >> tempNum;
-		listTemp.addTail(tempNum);
+		cin >> temp;
+		listTemp.addTail(temp);
 	}
-	//listTemp.handle();
-	//listTemp.getSize();
-	//listTemp.showList();
+	listTemp.handle(dataRemove);
+	cout << listTemp.getSize();
+	listTemp.showList();
 	return 0;
 }

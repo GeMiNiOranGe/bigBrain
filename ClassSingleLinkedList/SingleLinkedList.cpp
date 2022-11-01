@@ -39,15 +39,7 @@
 //	//	}
 //	//}
 //}
-//
-//void SingleLinkedList::showList() {
-//	Node *pWalker = this->pHead;
-//	for (; pWalker != nullptr; pWalker = pWalker->pNext) {
-//		cout << pWalker->data << " ";
-//	}
-//	cout << endl;
-//}
-//
+
 /*void SingleLinkedList::handle_DSLK1() {
 	Node *pWalker = this->pHead;
 	char cTemp = pWalker->data;
@@ -72,13 +64,24 @@ void SingleLinkedList::handle_DSLK2() {
 			}
 		}
 	}
+}
+void SingleLinkedList::handle_CONTRO2(int dataRemove) {
+	Node * pWalker = this->pHead;
+	for (; pWalker != nullptr; pWalker = pWalker->pNext) {
+		if (dataRemove == pWalker->data) {
+			if (pWalker == this->pHead) {
+				pWalker = pWalker->pNext;
+				removeHead();
+			}
+			else if (pWalker == this->pTail) {
+				pWalker = searchPre(pWalker);
+				removeTail();
+			}
+			else {
+				pWalker = searchPre(pWalker);
+				remove(pWalker->pNext->data);
+			}
+		}
+	}
 }*/
 
-//template<class dataType>
-//ostream & operator<<(ostream & os, SingleLinkedList<dataType>) {
-//	Node<dataType> *pWalker = this->pHead;
-//	for (; pWalker != nullptr; pWalker = pWalker->pNext) {
-//		os << pWalker->data << " ";
-//	}
-//	return os;
-//}
