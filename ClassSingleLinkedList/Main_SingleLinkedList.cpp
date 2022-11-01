@@ -4,14 +4,16 @@
 using namespace std;
 
 int main() {
-	SingleLinkedList listTemp;
-	int length, data, index, tempNum;
+	SingleLinkedList<char> listTemp;
+	int length, index;
+	char data, tempNum;
 	cin >> length;
 	for (int i = 0; i < length; i++) {
 		cin >> tempNum;
 		listTemp.addTail(tempNum);
 	}
-	listTemp.handle_DSLK2();
-	listTemp.showList();
+	//listTemp.handle();
+	//listTemp.getSize();
+	//listTemp.showList();
 	return 0;
 }
