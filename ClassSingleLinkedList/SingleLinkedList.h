@@ -173,8 +173,14 @@ inline void SingleLinkedList<dataType>::handle(int dataRemove) {
 	for (; pWalker != nullptr; pWalker = pWalker->pNext) {
 		if (dataRemove == pWalker->data) {
 			if (pWalker == this->pHead) {
-				pWalker = pWalker->pNext;
-				removeHead();
+				for (int i = 0; i < 10 && dataRemove == pWalker->data; i++) {
+					pWalker = pWalker->pNext;
+					removeHead();
+				}
+				pWalker = this->pHead;
+				if (pWalker == nullptr) {
+					break;
+				}
 			}
 			else if (pWalker == this->pTail) {
 				pWalker = searchPre(pWalker);
@@ -187,11 +193,9 @@ inline void SingleLinkedList<dataType>::handle(int dataRemove) {
 		}
 	}
 }
-
 template<class dataType> inline void SingleLinkedList<dataType>::showList() {
 	Node<dataType> *pWalker = this->pHead;
 	for (; pWalker != nullptr; pWalker = pWalker->pNext) {
 		cout << pWalker->data << " ";
 	}
 }
-

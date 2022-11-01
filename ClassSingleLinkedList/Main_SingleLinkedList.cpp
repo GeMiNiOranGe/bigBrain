@@ -12,7 +12,7 @@ int main() {
 		listTemp.addTail(temp);
 	}
 	listTemp.handle(dataRemove);
-	cout << listTemp.getSize();
+	cout << listTemp.getSize() << endl;
 	listTemp.showList();
 	return 0;
 }
