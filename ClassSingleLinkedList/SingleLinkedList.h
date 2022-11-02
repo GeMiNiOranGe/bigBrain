@@ -32,7 +32,7 @@ public:
 	void removeAfter(Node<dataType>*);
 	void remove(dataType);
 
-	//void insertAt(dataType, int);
+	void insertAt(dataType, int);
 	void handle(int);
 	void showList();
 private:
@@ -164,6 +164,24 @@ template<class dataType> inline void SingleLinkedList<dataType>::remove(dataType
 		pTemp->pNext = pWalker->pNext;
 		delete pWalker;
 		this->iSize--;
+	}
+}
+
+template<class dataType>
+inline void SingleLinkedList<dataType>::insertAt(dataType _data, int index) {
+	if (isEmpty() || index == 0)
+		addHead(_data);
+	else if (index > getSize())
+		addTail(_data);
+	else {
+		Node<dataType> *pTemp = this->pHead;
+		for (int i = 0; i < index - 1; i++) {
+			pTemp = pTemp->pNext;
+		}
+		Node<dataType> *pAdd = new Node<dataType>(_data);
+		pAdd->pNext = pTemp->pNext;
+		pTemp->pNext = pAdd;
+		this->iSize++;
 	}
 }
 
