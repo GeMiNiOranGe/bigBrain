@@ -173,9 +173,11 @@ inline void SingleLinkedList<dataType>::handle(int dataRemove) {
 	for (; pWalker != nullptr; pWalker = pWalker->pNext) {
 		if (dataRemove == pWalker->data) {
 			if (pWalker == this->pHead) {
-				for (int i = 0; i < 10 && dataRemove == pWalker->data; i++) {
-					pWalker = pWalker->pNext;
-					removeHead();
+				for (int i = 0; i < 20 && pWalker != nullptr; i++) {
+					if (dataRemove == pWalker->data) {
+						pWalker = pWalker->pNext;
+						removeHead();
+					}
 				}
 				pWalker = this->pHead;
 				if (pWalker == nullptr) {
