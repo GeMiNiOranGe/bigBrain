@@ -1,21 +1,5 @@
 #include "SingleLinkedList.h"
 
-//void SingleLinkedList::insertAt(int _data, int index) {
-//	if (isEmpty()) {
-//		addHead(_data);
-//	}
-//	else {
-//		Node *pTemp = this->pHead;
-//		for (int i = 0; i < index - 1; i++) {
-//			pTemp = pTemp->pNext;
-//		}
-//		Node *pAdd = new Node(_data);
-//		pAdd->pNext = pTemp->pNext;
-//		pTemp->pNext = pAdd;
-//	}
-//	this->iSize++;
-//}
-
 /*void SingleLinkedList::handle_DSLK1() {
 	Node *pWalker = this->pHead;
 	char cTemp = pWalker->data;
@@ -68,4 +52,6 @@ void SingleLinkedList::handle_CONTRO2(int dataRemove) {
 		}
 	}
 }*/
-
+bool checkSum(int a, int b, int c) {
+	return (a == b + c || b == a + c || c == a + b);
+}

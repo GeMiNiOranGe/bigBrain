@@ -4,9 +4,8 @@
 
 #include <iostream>
 using std::cout;
-using std::cin;
-using std::endl;
-using namespace std;
+
+bool checkSum(int a, int b, int c);
 
 template<class dataType> class SingleLinkedList;
 template<class dataType> class Node {
@@ -31,10 +30,9 @@ public:
 	void removeTail();
 	void removeAfter(Node<dataType>*);
 	void remove(dataType);
-
 	void insertAt(dataType, int);
-	void handle(int);
 	void showList();
+	bool hasSum2Equal3rdNum();
 private:
 	Node<dataType>* pHead;
 	Node<dataType>* pTail;
@@ -167,8 +165,7 @@ template<class dataType> inline void SingleLinkedList<dataType>::remove(dataType
 	}
 }
 
-template<class dataType>
-inline void SingleLinkedList<dataType>::insertAt(dataType _data, int index) {
+template<class dataType> inline void SingleLinkedList<dataType>::insertAt(dataType _data, int index) {
 	if (isEmpty() || index == 0)
 		addHead(_data);
 	else if (index > getSize())
@@ -184,38 +181,24 @@ inline void SingleLinkedList<dataType>::insertAt(dataType _data, int index) {
 		this->iSize++;
 	}
 }
-
-template<class dataType>
-inline void SingleLinkedList<dataType>::handle(int dataRemove) {
-	Node<dataType> * pWalker = this->pHead;
-	for (; pWalker != nullptr; pWalker = pWalker->pNext) {
-		if (dataRemove == pWalker->data) {
-			if (pWalker == this->pHead) {
-				for (int i = 0; i < 20 && pWalker != nullptr; i++) {
-					if (dataRemove == pWalker->data) {
-						pWalker = pWalker->pNext;
-						removeHead();
-					}
-				}
-				pWalker = this->pHead;
-				if (pWalker == nullptr) {
-					break;
-				}
-			}
-			else if (pWalker == this->pTail) {
-				pWalker = searchPre(pWalker);
-				removeTail();
-			}
-			else {
-				pWalker = searchPre(pWalker);
-				remove(pWalker->pNext->data);
-			}
-		}
-	}
-}
 template<class dataType> inline void SingleLinkedList<dataType>::showList() {
 	Node<dataType> *pWalker = this->pHead;
 	for (; pWalker != nullptr; pWalker = pWalker->pNext) {
 		cout << pWalker->data << " ";
 	}
 }
+
+//There exists the sum of 2 of 3 numbers equal to the 3rd number
+template<class dataType> inline bool SingleLinkedList<dataType>::hasSum2Equal3rdNum() {
+	for (Node<dataType>* pFirst = this->pHead; pFirst->pNext->pNext != nullptr; pFirst = pFirst->pNext) {
+		for (Node<dataType>* pSecond = pFirst->pNext; pSecond->pNext != nullptr; pSecond = pSecond->pNext) {
+			for (Node<dataType>* pThird = pSecond->pNext; pThird != nullptr; pThird = pThird->pNext) {
+				if (checkSum(pFirst->data, pSecond->data,pThird->data)) {
+					return true;
+				}
+			}
+		}
+	}
+	return false;
+}
+
