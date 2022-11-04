@@ -5,17 +5,13 @@ using namespace std;
 
 int main() {
 	SingleLinkedList<int> listTemp;
-	int length, temp;
-	cin >> length;
+	int length, data, temp, index;
+	cin >> length >> data >> index;
 	for (int i = 0; i < length; i++) {
 		cin >> temp;
 		listTemp.addTail(temp);
 	}
-	if (listTemp.hasSum2Equal3rdNum()) {
-		cout << "YES";
-	}
-	else {
-		cout << "NO";
-	}
+	listTemp.selectionSort();
+	listTemp.showList();
 	return 0;
 }

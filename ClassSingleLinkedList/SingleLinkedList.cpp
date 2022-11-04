@@ -1,6 +1,45 @@
 #include "SingleLinkedList.h"
 
-/*void SingleLinkedList::handle_DSLK1() {
+/*template<class T>
+void List<T>::RemoveAt(int pos) {
+	if (count == 0) {
+		throw exception("List is empty");
+		return;
+	}
+	if (pos<0 || pos >count - 1) {
+		throw exception("Index is out of range");
+	}
+	else {
+		Node<T>* previous, *following;
+		if (pos > 0) {
+			previous = SetPosition(pos - 1);
+			following = previous->next;
+			previous->next = following->next;
+		}
+		else {
+			following = head; head = following->next;
+		}
+		delete following;
+		count--;
+	}
+}
+template<typename T>
+void List<T>::removeAt(unsigned index) {
+	if (!index) {
+		this->pop_front ();
+	}
+	else {
+		Node<T>*previous = this->head;
+		for (unsigned i = 0; i != index - 1; i++)
+			previous = previous->next;
+
+		Node<T> *removable = previous->next;
+		previous->next = removable->next;
+		delete removable;
+		this->size--;
+	}
+}
+void SingleLinkedList::handle_DSLK1() {
 	Node *pWalker = this->pHead;
 	char cTemp = pWalker->data;
 	cout << cTemp << " ";

@@ -4,6 +4,7 @@
 
 #include <iostream>
 using std::cout;
+using std::swap;
 
 bool checkSum(int a, int b, int c);
 
@@ -19,18 +20,25 @@ private:
 template<class dataType> class SingleLinkedList {
 public:
 	SingleLinkedList();
+
 	int getSize();
 	bool isEmpty();
+
 	void addHead(dataType);
 	void addTail(dataType);
 	void addAfter(Node<dataType>*, dataType);
+	void insertAt(dataType, int);
+
 	Node<dataType>* search(dataType);
 	Node<dataType>* searchPre(Node<dataType>*);
+
 	void removeHead();
 	void removeTail();
 	void removeAfter(Node<dataType>*);
 	void remove(dataType);
-	void insertAt(dataType, int);
+
+	void clear();
+	void selectionSort();
 	void showList();
 	bool hasSum2Equal3rdNum();
 private:
@@ -95,6 +103,22 @@ template<class dataType> inline void SingleLinkedList<dataType>::addAfter(Node<d
 	else
 		addHead(pAdd);
 	this->iSize++;
+}
+template<class dataType> inline void SingleLinkedList<dataType>::insertAt(dataType _data, int index) {
+	if (isEmpty() || index <= 0)
+		addHead(_data);
+	else if (index > getSize())
+		addTail(_data);
+	else {
+		Node<dataType> *pTemp = this->pHead;
+		for (int i = 0; i < index - 1; i++) {
+			pTemp = pTemp->pNext;
+		}
+		Node<dataType> *pAdd = new Node<dataType>(_data);
+		pAdd->pNext = pTemp->pNext;
+		pTemp->pNext = pAdd;
+		this->iSize++;
+	}
 }
 
 template<class dataType> inline Node<dataType>* SingleLinkedList<dataType>::search(dataType _data) {
@@ -165,20 +189,21 @@ template<class dataType> inline void SingleLinkedList<dataType>::remove(dataType
 	}
 }
 
-template<class dataType> inline void SingleLinkedList<dataType>::insertAt(dataType _data, int index) {
-	if (isEmpty() || index == 0)
-		addHead(_data);
-	else if (index > getSize())
-		addTail(_data);
-	else {
-		Node<dataType> *pTemp = this->pHead;
-		for (int i = 0; i < index - 1; i++) {
-			pTemp = pTemp->pNext;
+template<class dataType> inline void SingleLinkedList<dataType>::clear() {
+	while (this->pHead != nullptr) {
+		removeHead();
+	}
+}
+template<class dataType> inline void SingleLinkedList<dataType>::selectionSort() {
+	Node<dataType> *pMin, *pFirst, *pSecond;
+	for (pFirst = this->pHead; pFirst != nullptr; pFirst = pFirst->pNext) {
+		pMin = pFirst;
+		for (pSecond = pFirst->pNext; pSecond != nullptr; pSecond = pSecond->pNext) {
+			if (pSecond->data < pMin->data) {
+				pMin = pSecond;
+			}
 		}
-		Node<dataType> *pAdd = new Node<dataType>(_data);
-		pAdd->pNext = pTemp->pNext;
-		pTemp->pNext = pAdd;
-		this->iSize++;
+		swap(pMin->data, pFirst->data);
 	}
 }
 template<class dataType> inline void SingleLinkedList<dataType>::showList() {
@@ -187,13 +212,12 @@ template<class dataType> inline void SingleLinkedList<dataType>::showList() {
 		cout << pWalker->data << " ";
 	}
 }
-
 //There exists the sum of 2 of 3 numbers equal to the 3rd number
 template<class dataType> inline bool SingleLinkedList<dataType>::hasSum2Equal3rdNum() {
 	for (Node<dataType>* pFirst = this->pHead; pFirst->pNext->pNext != nullptr; pFirst = pFirst->pNext) {
 		for (Node<dataType>* pSecond = pFirst->pNext; pSecond->pNext != nullptr; pSecond = pSecond->pNext) {
 			for (Node<dataType>* pThird = pSecond->pNext; pThird != nullptr; pThird = pThird->pNext) {
-				if (checkSum(pFirst->data, pSecond->data,pThird->data)) {
+				if (checkSum(pFirst->data, pSecond->data, pThird->data)) {
 					return true;
 				}
 			}
