@@ -12,8 +12,7 @@ int evaluatePostfix(string strPostfix);
 int main() {
 	string strInfix;
 	getline(cin, strInfix);
-	cout << convertInfixToPostfix(strInfix) << endl;
-	//cout << evaluatePostfix(convertInfixToPostfix(strInfix));
+	cout << evaluatePostfix(convertInfixToPostfix(strInfix));
 }
 
 int priority(char cOperator) {
@@ -32,10 +31,15 @@ string convertInfixToPostfix(string strInfix) {
 	for (int i = 0; i < strInfix.size(); i++) {
 		for (; strInfix.at(i) == ' '; i++);
 		if (isalnum(strInfix.at(i))) {
-			strPostfix = strPostfix + " " + strInfix.at(i);
-			for (; isalnum(strInfix.at(i + 1)); i++) {
-				strPostfix += strInfix.at(i + 1);
+			strPostfix += " ";
+			for (; isalnum(strInfix.at(i));) {
+				strPostfix += strInfix.at(i);
+				i++;
+				if (!(i < strInfix.size())) {
+					break;
+				}
 			}
+			i--;
 		}
 		else if (strInfix.at(i) == '(')
 			stackOperator.push('(');
