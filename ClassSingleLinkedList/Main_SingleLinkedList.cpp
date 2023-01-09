@@ -11,16 +11,17 @@ int main() {
 	const int length = 15;
 	const int minData = 1;
 	const int maxData = 10;
+	int numRemove = random(minData, maxData);
 	for (int i = 0; i < length; i++) {
 		list.addTail(random(minData, maxData));
 	}
 	//list.selectionSort();
 	list.showList();
 	cout << endl;
-	int numRemove = random(minData, maxData);
 	cout << "Number will be removed: " << numRemove << endl;
 	list.removeAll(numRemove);
 	list.showList();
+	cout << endl << "---------------------------------------------------" << endl;
 	return 0;
 }
 

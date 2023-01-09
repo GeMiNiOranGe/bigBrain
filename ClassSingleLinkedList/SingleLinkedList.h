@@ -178,17 +178,19 @@ template<class dataType> inline void SingleLinkedList<dataType>::removeAll(dataT
 			Node<dataType>* pTemp = pWalker;
 			pWalker = searchPre(pWalker);
 			remove(pTemp->data);
+			if (pWalker == nullptr) pWalker = this->pHead;
 		}
 	}
 }
 template<class dataType> inline void SingleLinkedList<dataType>::remove(dataType _data) {
 	Node<dataType>* pWalker = this->pHead, *pTemp = nullptr;
-	if (pWalker == this->pHead && pWalker->data == _data) {
-		this->pHead = this->pHead->pNext;
-		//this->pWalker->pNext = nullptr;
-		//pTemp->pNext = pWalker->pNext;
-		delete pWalker;
-		this->iSize--;
+	if (pWalker == this->pHead && pWalker != nullptr && pWalker->data == _data) {
+		//this->pHead = this->pHead->pNext;
+		////this->pWalker->pNext = nullptr;
+		////pTemp->pNext = pWalker->pNext;
+		//delete pWalker;
+		//this->iSize--;
+		removeHead();
 		return;
 	}
 	for (; pWalker != nullptr && pWalker->data != _data; pWalker = pWalker->pNext) {
