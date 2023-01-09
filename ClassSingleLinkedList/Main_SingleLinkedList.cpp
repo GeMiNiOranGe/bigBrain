@@ -1,17 +1,29 @@
-#include <iostream>
+#include <ctime>
 #include "SingleLinkedList.h"
 
 using namespace std;
 
+int random(int minN, int maxN);
+
 int main() {
-	SingleLinkedList<int> listTemp;
-	int length, data, temp, index;
-	cin >> length >> data >> index;
+	srand((int)time(0));
+	SingleLinkedList<int> list;
+	const int length = 15;
+	const int minData = 1;
+	const int maxData = 10;
 	for (int i = 0; i < length; i++) {
-		cin >> temp;
-		listTemp.addTail(temp);
+		list.addTail(random(minData, maxData));
 	}
-	listTemp.selectionSort();
-	listTemp.showList();
+	//list.selectionSort();
+	list.showList();
+	cout << endl;
+	int numRemove = random(minData, maxData);
+	cout << "Number will be removed: " << numRemove << endl;
+	list.removeAll(numRemove);
+	list.showList();
 	return 0;
+}
+
+int random(int minN, int maxN) {
+	return minN + rand() % (maxN + 1 - minN);
 }
