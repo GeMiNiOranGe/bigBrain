@@ -175,8 +175,8 @@ template<class dataType> inline void SingleLinkedList<dataType>::removeAfter(Nod
 template<class dataType> inline void SingleLinkedList<dataType>::removeAll(dataType _data) {
 	for (Node<dataType>* pWalker = this->pHead; pWalker != nullptr; pWalker = pWalker->pNext) {
 		if (pWalker->data == _data) {
+			Node<dataType>* pTemp = pWalker;
 			pWalker = searchPre(pWalker);
-			Node<dataType>* pTemp = pWalker->pNext;
 			remove(pTemp->data);
 		}
 	}
